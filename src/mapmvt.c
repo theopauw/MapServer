@@ -485,6 +485,11 @@ int msMVTWriteTile(mapObj *map, int sendheaders) {
         msProjectionsDiffer(&(layer->projection), &(map->projection));
 
     rect = map->extent;
+    rect.minx -= buffer;
+    rect.maxx += buffer;
+    rect.miny -= buffer;
+    rect.maxy += buffer;
+
     if (layer->project)
       msProjectRect(&(map->projection), &(layer->projection), &rect);
 
